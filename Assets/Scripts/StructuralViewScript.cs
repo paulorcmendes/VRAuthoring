@@ -37,7 +37,7 @@ public class StructuralViewScript : MonoBehaviour
         newLink.transform.localPosition = position;
         Vector3 distMedia = to.transform.position - from.transform.position;
         newLink.transform.up = distMedia;
-        newLink.transform.localScale = new Vector3(newLink.transform.localScale.x, newLink.transform.localScale.y * distMedia.magnitude / dist, newLink.transform.localScale.z);
+        newLink.transform.localScale = new Vector3(newLink.transform.localScale.x, newLink.transform.localScale.y *1.1f, newLink.transform.localScale.z);
         MeshRenderer[] meshes = newLink.GetComponentsInChildren<MeshRenderer>();
         Material condMat = null, actMat= null;
         foreach(Material mat in Resources.FindObjectsOfTypeAll<Material>())
@@ -95,6 +95,7 @@ public class StructuralViewScript : MonoBehaviour
             myMedia.transform.parent = transform;
             myMedia.transform.localPosition = new Vector3(i*dist, j*dist);
             myMedia.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            myMedia.transform.Rotate(new Vector3(0,180,0)); 
 
             MeshFilter meshFilter = myMedia.AddComponent<MeshFilter>();
             MeshRenderer meshRenderer = myMedia.AddComponent<MeshRenderer>();

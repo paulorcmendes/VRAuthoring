@@ -43,8 +43,8 @@ public class MediaControllerScript : MonoBehaviour {
     {
         SwitchMyMode();
     }
-
-        public void SwitchMyMode()
+          
+    public void SwitchMyMode()
     {
         if (myMode == CurrentMode.EDITING)
         {

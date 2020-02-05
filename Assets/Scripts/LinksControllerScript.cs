@@ -13,7 +13,7 @@ public class LinksControllerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        delayRemoval = 5f;
+        delayRemoval = 2f;
         links = new Dictionary<GameObject, Link>();
         lastRemoval = -delayRemoval;
         nclParser = GameObject.FindGameObjectWithTag("GameController").GetComponent<NCLParser>();
@@ -32,7 +32,9 @@ public class LinksControllerScript : MonoBehaviour
         LinkCollision linkCollision = linkObject.GetComponent<LinkCollision>();
         linkCollision.Description = link.ToString();
         linkCollision.linksController = this;
-        linkObject.transform.Translate(new Vector3(0,1.5f*links.Count));
+        Debug.Log("Link count " + 1.5f * links.Count);
+        linkObject.transform.localPosition = new Vector3(0, 1.5f*links.Count, 0);
+        Debug.Log("Link moved "+linkObject.transform.localPosition);
         links.Add(linkObject, link);
         structural.AddLinkToGraph(link);
     }
