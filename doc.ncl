@@ -24,14 +24,6 @@
     </connectorBase>
   </head>
   <body>
-    <port id="portMedia1" component="Media1" />
-    <link xconnector="onEndStart">
-      <bind role="onEnd" component="Media1" />
-      <bind role="Start" component="Media2" />
-    </link>
-    <link xconnector="onEndStart">
-      <bind role="onEnd" component="Media2" />
-      <bind role="Start" component="Media1" />
-    </link>
+    <port id="portMedia2" component="Media2" />
   </body>
 </ncl>

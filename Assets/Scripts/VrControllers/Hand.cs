@@ -35,6 +35,10 @@ public class Hand : MonoBehaviour
             grabing_object.transform.position = last_pos;
             grabing_object.transform.rotation = last_rot;
             //Debug.Log(last_pos.position);
+            //grabing_object.GetComponent<BoxCollider>().enabled = true;
+            // this.GetComponent<BoxCollider>().enabled = true;
+            
+            grabing_object.GetComponent<GrabbingFlag>().isGrabed = false;
             grabing_object = null;
         }
     }
@@ -48,6 +52,9 @@ public class Hand : MonoBehaviour
             last_rot = grabing_object.transform.rotation;
             //Debug.Log("Pegou pos "+last_pos.position);
             grabing_object.transform.parent = gameObject.transform;
+            grabing_object.GetComponent<GrabbingFlag>().isGrabed = true;
+            //grabing_object.GetComponent<BoxCollider>().enabled = false;
+            //this.GetComponent<BoxCollider>().enabled = false;
         }
     }
 
@@ -60,21 +67,20 @@ public class Hand : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         bool someTag = collision.gameObject.CompareTag("Initial") || collision.gameObject.CompareTag("OriginalMedia") || collision.gameObject.CompareTag("Action") || collision.gameObject.CompareTag("Condition") || collision.gameObject.CompareTag("ConditionMedia") || collision.gameObject.CompareTag("ActionMedia") || collision.gameObject.CompareTag("Delete");
-        if (grabing_object == null && someTag)
-        {
-
+        if (grabing_object == null && someTag && collision.gameObject.GetComponent<GrabbingFlag>().isGrabed == false)
+        {            
             grabing_object = collision.gameObject;
-
+            //grabing_object.GetComponent<GrabbingFlag>().isGrabed = true;
         }
     }
 
     private void OnCollisionStay(Collision collision)
     {
         bool someTag = collision.gameObject.CompareTag("Initial") || collision.gameObject.CompareTag("OriginalMedia") || collision.gameObject.CompareTag("Action") || collision.gameObject.CompareTag("Condition") || collision.gameObject.CompareTag("ConditionMedia") || collision.gameObject.CompareTag("ActionMedia") || collision.gameObject.CompareTag("Delete");
-        if (grabing_object == null && someTag)
+        if (grabing_object == null && someTag && collision.gameObject.GetComponent<GrabbingFlag>().isGrabed == false)
         {
-
             grabing_object = collision.gameObject;
+           //grabing_object.GetComponent<GrabbingFlag>().isGrabed = true;
 
         }
     }
@@ -83,6 +89,7 @@ public class Hand : MonoBehaviour
     {
         if (collision.gameObject.Equals(grabing_object))
         {
+            //grabing_object.GetComponent<GrabbingFlag>().isGrabed = false;
             grabing_object = null;
         }
     }

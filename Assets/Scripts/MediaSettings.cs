@@ -27,7 +27,6 @@ public class MediaSettings : MonoBehaviour {
     public event MyHandler OnBegin;
     public event MyHandler OnEnd;
 
-
     // Use this for initialization
     void Awake () {
         InitialConfiguration();

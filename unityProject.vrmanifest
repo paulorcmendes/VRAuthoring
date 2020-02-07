@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.vivemultimedia.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\paulo\\Documents\\ViveMultimedia\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "C:\\Users\\paulo\\Documents\\VRAuthoring\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "ViveMultimedia [Testing]"

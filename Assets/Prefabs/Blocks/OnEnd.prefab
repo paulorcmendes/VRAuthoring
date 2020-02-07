@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 23168439837735892}
   - component: {fileID: 54289735346649976}
   - component: {fileID: 114316430295274760}
+  - component: {fileID: 7464015048938280800}
   m_Layer: 0
   m_Name: OnEnd
   m_TagString: Condition
@@ -122,3 +123,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myKind: 1
+--- !u!114 &7464015048938280800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620894968715796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6d55688ad881d840915904a9fbfabea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGrabed: 0
