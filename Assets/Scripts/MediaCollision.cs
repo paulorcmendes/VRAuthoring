@@ -5,12 +5,12 @@ using UnityEngine.UI;
 using System;
 
 public class MediaCollision : MonoBehaviour {
-	private Text text;
+    //private Text text;
     private MediaControllerScript controller;
 
 	void Start () 
 	{
-		text = GameObject.FindGameObjectWithTag ("OutText").GetComponent<Text>();
+		//text = GameObject.FindGameObjectWithTag ("OutText").GetComponent<Text>();
         controller = GameObject.FindGameObjectWithTag("GameController").GetComponent<MediaControllerScript>();
     }
    
@@ -47,7 +47,7 @@ public class MediaCollision : MonoBehaviour {
             {                
                 Inst.IsInitialMedia = true;
                 controller.OnEntry(gameObject);
-                text.text = "Port " + Inst.MediaId;
+                //text.text = "Port " + Inst.MediaId;
             }
             else
             {
@@ -65,8 +65,8 @@ public class MediaCollision : MonoBehaviour {
                     Enum.GetName(typeof(ConditionActionK), Inst.MyKind) + " " + Inst.MediaId + " " +
                     Enum.GetName(typeof(ConditionActionK), colInst.MyKind) + " " + colInst.MediaId + " "
                 );*/
-                text.text = Enum.GetName(typeof(ConditionActionK), Inst.MyKind) + " " + Inst.MediaId + " " +
-                            Enum.GetName(typeof(ConditionActionK), colInst.MyKind) + " " + colInst.MediaId + " ";
+                /*text.text = Enum.GetName(typeof(ConditionActionK), Inst.MyKind) + " " + Inst.MediaId + " " +
+                            Enum.GetName(typeof(ConditionActionK), colInst.MyKind) + " " + colInst.MediaId + " ";*/
                 controller.CreateLink(gameObject, collision.gameObject);
             }
         }

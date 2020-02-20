@@ -16,12 +16,14 @@ public class Hand : MonoBehaviour
     public GameObject desk;
 
     private Vector3 last_pos;
+    private Vector3 last_scale;
     private Quaternion last_rot;
+    private GameObject multimedia;
     void Start()
     {
         SphereOnOff.AddOnStateDownListener(TriggerDown, handType);
         SphereOnOff.AddOnStateUpListener(TriggerUp, handType);
-
+        multimedia = GameObject.FindGameObjectWithTag("Multimedia");
         grabing_object = null;
     }
 
@@ -31,13 +33,14 @@ public class Hand : MonoBehaviour
         if(grabing_object != null)
         {
             Debug.Log("Released");
-            grabing_object.transform.parent = null;
+            grabing_object.transform.parent = multimedia.transform;
             grabing_object.transform.position = last_pos;
             grabing_object.transform.rotation = last_rot;
+            grabing_object.transform.localScale = last_scale;
             //Debug.Log(last_pos.position);
             //grabing_object.GetComponent<BoxCollider>().enabled = true;
             // this.GetComponent<BoxCollider>().enabled = true;
-            
+
             grabing_object.GetComponent<GrabbingFlag>().isGrabed = false;
             grabing_object = null;
         }
@@ -50,6 +53,7 @@ public class Hand : MonoBehaviour
             Debug.Log("Set Parent");
             last_pos = grabing_object.transform.position;
             last_rot = grabing_object.transform.rotation;
+            last_scale = grabing_object.transform.localScale;
             //Debug.Log("Pegou pos "+last_pos.position);
             grabing_object.transform.parent = gameObject.transform;
             grabing_object.GetComponent<GrabbingFlag>().isGrabed = true;

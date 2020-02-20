@@ -24,6 +24,6 @@
     </connectorBase>
   </head>
   <body>
-    <port id="portMedia2" component="Media2" />
+    <port id="portMedia1" component="Media1" />
   </body>
 </ncl>

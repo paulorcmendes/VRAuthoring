@@ -18,6 +18,9 @@ TagManager:
   - ActionMedia
   - AnchorDisplay
   - DisplayVideo
+  - Desk
+  - Multimedia
+  - MyTV
   layers:
   - Default
   - TransparentFX

@@ -17,6 +17,8 @@ public class MediaControllerScript : MonoBehaviour {
     private List<GameObject> portsList;
     public GameObject canvas;
     private StructuralViewScript structural;
+    private GameObject desk;
+    private GameObject mytv;
     // Use this for initialization
 
     public SteamVR_Action_Boolean PlayPause;
@@ -30,7 +32,8 @@ public class MediaControllerScript : MonoBehaviour {
         nclParser = GameObject.FindGameObjectWithTag("GameController").GetComponent<NCLParser>();
         linksController = GameObject.FindGameObjectWithTag("LinksController").GetComponent<LinksControllerScript>();
         structural = GameObject.FindGameObjectWithTag("StructuralView").GetComponent<StructuralViewScript>();
-
+        desk = GameObject.FindGameObjectWithTag("Desk");
+        mytv = GameObject.FindGameObjectWithTag("MyTV");
         PlayPause.AddOnStateDownListener(EmpunhaduraDown, handType);
     }
 	
@@ -55,6 +58,8 @@ public class MediaControllerScript : MonoBehaviour {
             linksController.ApplyLinks();
             Play();
             nclParser.Save();
+            desk.GetComponent<FadeScript>().StartFade(new Vector3(0f,-1f, 0.411f));
+            mytv.GetComponent<FadeScript>().StartFade(new Vector3(0f, 1f, 2f));
         }
         else
         {
@@ -66,11 +71,14 @@ public class MediaControllerScript : MonoBehaviour {
             myMode = CurrentMode.EDITING;
 
             var displaysVideo = GameObject.FindGameObjectsWithTag("DisplayVideo");
-
-            foreach(GameObject displayVideo in displaysVideo)
+            
+            foreach (GameObject displayVideo in displaysVideo)
             {
                 displayVideo.SetActive(false);
             }
+            //desk.SetActive(true);
+            desk.GetComponent<FadeScript>().StartFade();
+            mytv.GetComponent<FadeScript>().StartFade();
         }
     }
 

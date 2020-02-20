@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\ConditionAction.cs" />
     <Compile Include="Assets\Scripts\ConnectorBase.cs" />
+    <Compile Include="Assets\Scripts\FadeScript.cs" />
     <Compile Include="Assets\Scripts\GrabbingFlag.cs" />
     <Compile Include="Assets\Scripts\Link.cs" />
     <Compile Include="Assets\Scripts\LinkCollision.cs" />
