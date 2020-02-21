@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 54360412930661950}
   - component: {fileID: 114210310818257578}
   - component: {fileID: 6504572390674916917}
+  - component: {fileID: 3257187435437146726}
   m_Layer: 0
   m_Name: Stop
   m_TagString: Action
@@ -136,3 +137,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGrabed: 0
+--- !u!1818360610 &3257187435437146726
+ScaleConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441554478422222}
+  m_Enabled: 1
+  m_Weight: 1
+  m_ScaleAtRest: {x: 1, y: 1, z: 1}
+  m_ScaleOffset: {x: 1, y: 1, z: 1}
+  m_AffectScalingX: 1
+  m_AffectScalingY: 1
+  m_AffectScalingZ: 1
+  m_IsContraintActive: 0
+  m_IsLocked: 0
+  m_Sources: []

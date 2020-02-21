@@ -15,17 +15,20 @@ public class Hand : MonoBehaviour
 
     public GameObject desk;
 
-    private Vector3 last_pos;
-    private Vector3 last_scale;
-    private Quaternion last_rot;
+    //private Vector3 last_pos;
+    //private Vector3 last_scale;
+    //private Quaternion last_rot;
     private GameObject multimedia;
+    private GameObject gameController;
     void Start()
     {
         SphereOnOff.AddOnStateDownListener(TriggerDown, handType);
         SphereOnOff.AddOnStateUpListener(TriggerUp, handType);
         multimedia = GameObject.FindGameObjectWithTag("Multimedia");
+        gameController = GameObject.FindGameObjectWithTag("GameController");
         grabing_object = null;
     }
+
 
     public void TriggerUp(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
     {
@@ -34,9 +37,9 @@ public class Hand : MonoBehaviour
         {
             Debug.Log("Released");
             grabing_object.transform.parent = multimedia.transform;
-            grabing_object.transform.position = last_pos;
-            grabing_object.transform.rotation = last_rot;
-            grabing_object.transform.localScale = last_scale;
+            grabing_object.transform.position = grabing_object.GetComponent<GrabbingFlag>().initialPos;
+            grabing_object.transform.rotation = grabing_object.GetComponent<GrabbingFlag>().initialRot;
+            //grabing_object.transform.localScale = last_scale;
             //Debug.Log(last_pos.position);
             //grabing_object.GetComponent<BoxCollider>().enabled = true;
             // this.GetComponent<BoxCollider>().enabled = true;
@@ -51,9 +54,9 @@ public class Hand : MonoBehaviour
         if (grabing_object != null )
         {
             Debug.Log("Set Parent");
-            last_pos = grabing_object.transform.position;
-            last_rot = grabing_object.transform.rotation;
-            last_scale = grabing_object.transform.localScale;
+            //last_pos = grabing_object.transform.position;
+            //last_rot = grabing_object.transform.rotation;
+            //last_scale = grabing_object.transform.localScale;
             //Debug.Log("Pegou pos "+last_pos.position);
             grabing_object.transform.parent = gameObject.transform;
             grabing_object.GetComponent<GrabbingFlag>().isGrabed = true;
@@ -65,7 +68,23 @@ public class Hand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameController.GetComponent<MediaControllerScript>().myMode == CurrentMode.PLAYING)
+        {
+            if (grabing_object != null)
+            {
+                Debug.Log("Released");
+                grabing_object.transform.parent = multimedia.transform;
+                grabing_object.transform.position = grabing_object.GetComponent<GrabbingFlag>().initialPos;
+                grabing_object.transform.rotation = grabing_object.GetComponent<GrabbingFlag>().initialRot;
+                //grabing_object.transform.localScale = last_scale;
+                //Debug.Log(last_pos.position);
+                //grabing_object.GetComponent<BoxCollider>().enabled = true;
+                // this.GetComponent<BoxCollider>().enabled = true;
 
+                grabing_object.GetComponent<GrabbingFlag>().isGrabed = false;
+                grabing_object = null;
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -80,13 +99,13 @@ public class Hand : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        bool someTag = collision.gameObject.CompareTag("Initial") || collision.gameObject.CompareTag("OriginalMedia") || collision.gameObject.CompareTag("Action") || collision.gameObject.CompareTag("Condition") || collision.gameObject.CompareTag("ConditionMedia") || collision.gameObject.CompareTag("ActionMedia") || collision.gameObject.CompareTag("Delete");
+        /*bool someTag = collision.gameObject.CompareTag("Initial") || collision.gameObject.CompareTag("OriginalMedia") || collision.gameObject.CompareTag("Action") || collision.gameObject.CompareTag("Condition") || collision.gameObject.CompareTag("ConditionMedia") || collision.gameObject.CompareTag("ActionMedia") || collision.gameObject.CompareTag("Delete");
         if (grabing_object == null && someTag && collision.gameObject.GetComponent<GrabbingFlag>().isGrabed == false)
         {
             grabing_object = collision.gameObject;
            //grabing_object.GetComponent<GrabbingFlag>().isGrabed = true;
 
-        }
+        }*/
     }
 
     private void OnCollisionExit(Collision collision)

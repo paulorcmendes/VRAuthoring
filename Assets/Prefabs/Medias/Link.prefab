@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2346595493934979117}
   - component: {fileID: 2305857020683386569}
   - component: {fileID: 1202719379944850}
+  - component: {fileID: 1095261714425432970}
   m_Layer: 0
   m_Name: Link
   m_TagString: Link
@@ -124,3 +125,21 @@ MonoBehaviour:
   Description: 
   linkNamePrefab: {fileID: 1247406006908874, guid: e5d784b50c8016546b8f7e179f7b65b3,
     type: 3}
+  linksController: {fileID: 0}
+--- !u!1818360610 &1095261714425432970
+ScaleConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2361406638713553813}
+  m_Enabled: 1
+  m_Weight: 1
+  m_ScaleAtRest: {x: 1.5, y: 1, z: 1.5}
+  m_ScaleOffset: {x: 1, y: 1, z: 1}
+  m_AffectScalingX: 1
+  m_AffectScalingY: 1
+  m_AffectScalingZ: 1
+  m_IsContraintActive: 0
+  m_IsLocked: 0
+  m_Sources: []

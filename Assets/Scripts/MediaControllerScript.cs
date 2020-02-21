@@ -58,7 +58,7 @@ public class MediaControllerScript : MonoBehaviour {
             linksController.ApplyLinks();
             Play();
             nclParser.Save();
-            desk.GetComponent<FadeScript>().StartFade(new Vector3(0f,-1f, 0.411f));
+            desk.GetComponent<FadeScript>().StartFade(new Vector3(0f,-3f, 0.411f));
             mytv.GetComponent<FadeScript>().StartFade(new Vector3(0f, 1f, 2f));
         }
         else
